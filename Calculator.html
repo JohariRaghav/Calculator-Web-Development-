@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>My Calculator</title>
+        <style rel="stylesheet" type="text/css">
+            #container
+            {
+                margin: auto;
+                border: 5px solid black;
+                border-radius: 10px;
+                padding: 10px 15px;
+                height: auto;
+                width: 200px;
+                background-color:yellow;
+            }
+            #input
+            {
+               padding-top:20px;
+               padding-bottom: 20px;
+                text-align: center;
+
+            }
+            #input input{
+                border-radius: 7px;
+                padding: 5px 15px;
+            }
+            .row
+            {
+                height: 70px;
+                width: 200px;
+                text-align: center;
+            }
+            .row button
+            {
+                padding: 15px 15px;
+                border-radius: 90px;
+                border: 1px solid black;
+                cursor: pointer;
+                margin: 0px 3px;
+                font-weight: bold;
+                font-size: 15px;
+            }
+            p{
+                text-align: center;
+                font-size: xx-large;
+                font-family:Georgia, 'Times New Roman', Times, serif;
+            }
+            .color{
+                background-color: lightgreen;
+            }
+            .special
+            {
+                background-color:tomato;
+            }
+            body{
+                background-color: dodgerblue;
+            }
+        </style>
+    </head>
+    <body>
+        <p><b><i>Calculate Me!</i></b></p>
+        <div id="container">
+            <div id="input">
+                <input class="input" type="text">
+            </div>
+            <div class="row">
+                <button class="button" name="button">7</button>
+                <button class="button" name="button">8</button>
+                <button class="button" name="button">9</button>
+                <button class="button color" name="button">+</button>
+            </div>
+            <div class="row">
+                <button class="button" name="button">4</button>
+                <button class="button" name="button">5</button>
+                <button class="button" name="button">6</button>
+                <button class="button color" name="button">-</button>
+            </div>
+            <div class="row">
+                <button class="button" name="button">1</button>
+                <button class="button" name="button">2</button>
+                <button class="button" name="button">3</button>
+                <button class="button color" name="button">*</button>
+            </div>
+            <div class="row">
+                <button class="button" name="button">C</button>
+                <button class="button" name="button">0</button>
+                <button class="button special" name="button">=</button>
+                <button class="button color" name="button">/</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            let string="";
+            let buttons=document.querySelectorAll('.button');
+            Array.from(buttons).forEach((button)=>
+            {
+                button.addEventListener('click',(e)=>
+                {
+                if(e.target.innerHTML=='=')
+                {
+                    string=eval(string);
+                    document.querySelector('input').value=string;
+                }
+                else if(e.target.innerHTML=='C')
+                {
+                    string="";
+                    document.querySelector('input').value=string;
+                }
+                else{
+                    console.log(e.target);
+                    string=string+e.target.innerHTML;
+                    document.querySelector('input').value=string;
+                }
+            })
+            })
+        </script>
+    </body>
+</html>
